@@ -1,2 +1,1 @@
-# Book Search Engine Starter Code
-# slims-book-search
+# Slim's Book Search
