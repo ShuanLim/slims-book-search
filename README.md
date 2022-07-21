@@ -72,7 +72,7 @@ Then
 npm run develop
 ```
 
-Open a web page and go to URL http://localhost:3000/ to use the Book Search application.
+Open a web page and go to URL http://localhost:3001/ to use the Book Search application.
 
 ## Contributions
 
