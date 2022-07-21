@@ -24,11 +24,11 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await removeBook ({
-        variables:{ bookId: bookId}
+      const { data } = await removeBook ({
+        variables:{ bookId}
       });
 
-      if (!response) {
+      if (error) {
         throw new Error('something went wrong!');
       }
 
@@ -58,7 +58,7 @@ const SavedBooks = () => {
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-        {data.userData.savedBooks.map((book) => {
+        {userData.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
