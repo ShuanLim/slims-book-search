@@ -12,9 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.3.0",
-    "apollo-server-express": "^3.9.0",
-    "apollo": "^2.34.0",
-    "bcrypt": "^5.0.0",
+    "apollo-server-express": "^3.3.0",
+    "bcrypt": "^4.0.1",
     "express": "^4.17.1",
     "graphql": "^15.6.0",
     "jsonwebtoken": "^8.5.1",
