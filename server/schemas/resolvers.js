@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     me: async (_parent, _args, context) => {
       if(context.user) {
-        return User.findOne({_id: context.user.id})
+        return User.findOne({ _id: context.user.id })
       }
     }
   },
@@ -51,7 +51,7 @@ const resolvers = {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedBooks: { bookId: bookId} } },
+          { $pull: { savedBooks: { bookId: bookId } } },
           { new: true }
         );
       }
