@@ -5,12 +5,12 @@ import { removeBookId } from '../utils/localStorage';
 import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { REMOVE_BOOK} from '../utils/mutations';
-import { QUERY_ME } from '../utils/queries';
+import { GET_ME } from '../utils/queries';
 
 const SavedBooks = () => {
-  const [ removeBook ] = useMutation(REMOVE_BOOK);
+  const [ removeBook, { error } ] = useMutation(REMOVE_BOOK);
 
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
 
 
@@ -25,10 +25,10 @@ const SavedBooks = () => {
 
     try {
       const response = await removeBook ({
-        variables:{ bookId: bookId }
+        variables:{ bookId: bookId}
       });
 
-      if (!response.ok) {
+      if (!response) {
         throw new Error('something went wrong!');
       }
 
@@ -40,7 +40,7 @@ const SavedBooks = () => {
   };
 
   // if data isn't here yet, say so
-  if (!userData) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 
@@ -58,7 +58,7 @@ const SavedBooks = () => {
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+        {data.userData.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
